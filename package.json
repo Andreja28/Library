@@ -1,22 +1,20 @@
 {
-  "name": "library",
+  "name": "web2",
   "version": "1.0.0",
-  "description": "��#\u0000 \u0000L\u0000i\u0000b\u0000r\u0000a\u0000r\u0000y\u0000\r\u0000 \u0000",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Andreja28/Library.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Andreja28/Library/issues"
-  },
-  "homepage": "https://github.com/Andreja28/Library#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-jwt": "^6.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.12",
+    "passport": "^0.5.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
   }
 }

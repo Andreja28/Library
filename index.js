@@ -1,25 +1,33 @@
-var express = require('express')
-var userRoutes = require('./routing/users')
-var bookRoutes = require("./routing/book")
-var authorRoutes = require("./routing/author")
-var app = express()
-var port = 5000;
+var express = require("express")
+var config = require("./config")
+var bookRoutes = require('./routes/books')
+var authRoutes = require('./routes/auth')
 
-app.use((err,req,res,next)=>{
+//var passport = require('passport')
+var passport = require('./routes/config/passport')
+
+var app = express()
+
+var mongoose = require("mongoose")
+mongoose.connect(config.dbConnection, {useNewUrlParser: true, useUnifiedTopology: true})
+
+// console.log(mongoose.connection)
+
+app.use(express.json())
+app.use(passport.initialize())
+app.use((err, req, res, next)=>{
     console.log(err.stack)
     res.status(500).send("There was an error.")
 })
-app.use(express.json())
 
-app.use('/user', userRoutes)
-app.use('/author', authorRoutes)
-app.use('/book', bookRoutes)
+app.use('/books',bookRoutes)
+app.use('/auth',authRoutes)
 
-app.get('/', (req, res)=>{
+app.get('/',(req, res) =>{
+    
     res.send("Hello world.")
 })
 
-
-app.listen(port, ()=>{
-    console.log(`example app listening at port ${port}`)
+app.listen(config.port, () => {
+    console.log(`Running on port: ${config.port}`)
 })

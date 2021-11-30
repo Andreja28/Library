@@ -52,18 +52,5 @@ passport.use(new JwtSrategy(jwtOptions, function(jwt_payload, done) {
 }))
 
 
-passport.authorizeRoles = function(...roles)
-{
-    return function(req, res, next){
-        if (roles.find(role => role === req.user.getRole())){
-            next()
-        }
-        else
-        {
-            res.status(403).send()
-        }
-    }
-}
-
 
 module.exports = passport
